@@ -2,7 +2,13 @@ const router = require('koa-router')()
 
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
-    title: 'Hello Koa 2!'
+    title: 'index'
+  })
+})
+
+router.get('/canvasBasics', async (ctx, next) => {
+  await ctx.render('canvasBasics', {
+    title: 'canvas基础'
   })
 })
 

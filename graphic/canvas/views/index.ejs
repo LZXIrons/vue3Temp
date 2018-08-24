@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/common.css' />
+    <link rel='stylesheet' href='/css/common.css' />
+    <style media="screen">
+      body{font-size: 0;}
+      .navtitle{width:100%;line-height: 50px;color: #000;font-size: 22px;text-align: center;margin:20px auto;}
+      .demonavlist{width:80%;margin:10px auto;}
+      .demonavitem{display: block;line-height: 30px;margin:6px;color: #666;font-size: 18px;}
+      .demonavitem:hover{color: #000;}
+    </style>
   </head>
   <body>
+    <h5 class="navtitle">各canvas练习源码导航</h5>
     <div class="demonavlist">
-      <a href="/" class="demonavitem"></a>
+      <a href="/canvasBasics" class="demonavitem">canvasBasics</a>
     </div>
   </body>
 </html>
