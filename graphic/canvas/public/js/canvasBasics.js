@@ -19,6 +19,22 @@
         fillOneRectangleWithLine();
         /*重复回形正方形*/
         drawBackRect();
+        /*
+        线段端点
+        lineCap 定义上下文中线的端点，可以有以下 3 个值。
+        butt：默认值，端点是垂直于线段边缘的平直边缘。
+        round：端点是在线段边缘处以线宽为直径的半圆。
+        square：端点是在选段边缘处以线宽为长、以一半线宽为宽的矩形。
+        */
+        testLineCap();
+        /*
+        线段连接
+        lineJoin 定义两条线相交产生的拐角，可将其称为连接。在连接处创建一个填充三角形，可以使用 lineJoin 设置它的基本属性。
+        miter：默认值，在连接处边缘延长相接。miterLimit 是角长和线宽所允许的最大比例(默认是 10)。
+        bevel：连接处是一个对角线斜角。
+        round：连接处是一个圆。
+        */
+        testLineJoin();
     },
     drawOneLine=function(){
         myctx.beginPath();
@@ -91,6 +107,77 @@
             myctx.stroke();
             myctx.closePath();
         }
+    },
+    testLineCap=function(){
+        myctx.beginPath();
+        myctx.moveTo(580,70);
+        myctx.lineTo(700,70);
+        myctx.strokeStyle='#FFF0F5';
+        myctx.lineWidth=10;
+        myctx.stroke();
+
+        myctx.beginPath();
+        myctx.moveTo(580,10);
+        myctx.lineTo(700,10);
+        myctx.lineCap='butt';
+        myctx.strokeStyle='#FFC0CB';
+        myctx.lineWidth=10;
+        myctx.stroke();
+
+        myctx.beginPath();
+        myctx.moveTo(580,30);
+        myctx.lineTo(700,30);
+        myctx.lineCap='round';
+        myctx.strokeStyle='#FFB6C1';
+        myctx.lineWidth=10;
+        myctx.stroke();
+
+        myctx.beginPath();
+        myctx.moveTo(580,50);
+        myctx.lineTo(700,50);
+        myctx.lineCap='square';
+        myctx.strokeStyle='#DC143C';
+        myctx.lineWidth=10;
+        myctx.stroke();
+    },
+    testLineJoin=function(){
+        myctx.beginPath();
+        myctx.moveTo(710,10);
+        myctx.lineTo(810,100);
+        myctx.lineTo(710,200);
+        myctx.strokeStyle='#DB7093';
+        myctx.lineWidth=10;
+        myctx.stroke();
+
+        myctx.beginPath();
+        myctx.moveTo(730,10);
+        myctx.lineTo(830,100);
+        myctx.lineTo(730,200);
+        myctx.lineJoin='miter';
+        myctx.miterLimit=10;
+        myctx.strokeStyle='#DB7093';
+        myctx.lineWidth=10;
+        myctx.stroke();
+
+        myctx.beginPath();
+        myctx.moveTo(750,10);
+        myctx.lineTo(850,100);
+        myctx.lineTo(750,200);
+        myctx.lineJoin='bevel';
+        myctx.miterLimit=10;
+        myctx.strokeStyle='#DB7093';
+        myctx.lineWidth=10;
+        myctx.stroke();
+
+        myctx.beginPath();
+        myctx.moveTo(770,10);
+        myctx.lineTo(870,100);
+        myctx.lineTo(770,200);
+        myctx.lineJoin='round';
+        myctx.miterLimit=10;
+        myctx.strokeStyle='#DB7093';
+        myctx.lineWidth=10;
+        myctx.stroke();
     },
     windowResize = function() {
         _w = _body.offsetWidth;
