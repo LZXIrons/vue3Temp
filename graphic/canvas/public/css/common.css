@@ -39,12 +39,12 @@ table {
 a{
     text-decoration:none;
 }
-a,button,textarea,input,select,img{
+a,button,textarea,input,select,img,.btn{
     outline: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
 }
-.selectnone{
+.noselect{
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
