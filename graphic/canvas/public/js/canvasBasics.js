@@ -35,6 +35,9 @@
         round：连接处是一个圆。
         */
         testLineJoin();
+        /*填充渐变形状*/
+        testLinearGradient();
+        testRadialGradient();
     },
     drawOneLine=function(){
         myctx.beginPath();
@@ -178,6 +181,34 @@
         myctx.strokeStyle='#DB7093';
         myctx.lineWidth=10;
         myctx.stroke();
+    },
+    testLinearGradient=function(){
+        myctx.beginPath();
+        //添加渐变线
+        var grd = myctx.createLinearGradient(900,200,1000,200);
+        //添加颜色断点
+        grd.addColorStop(0,"#C4C4C4");
+        grd.addColorStop(0.5,"#BF3EFF");
+        grd.addColorStop(1,"#B3EE3A");
+        //应用渐变
+        myctx.fillStyle = grd;
+        myctx.strokeStyle = grd;
+        myctx.lineWidth=5;
+        myctx.fillRect(900,0,100,100);
+        myctx.strokeRect(900,100,100,100);
+    },
+    testRadialGradient=function(){
+        myctx.beginPath();
+        //添加渐变线
+        var grd = myctx.createRadialGradient(1200,100,50,1200,100,100);
+        //添加颜色断点
+        grd.addColorStop(0,"#C4C4C4");
+        grd.addColorStop(0.5,"#BF3EFF");
+        grd.addColorStop(1,"#B3EE3A");
+        //应用渐变
+        myctx.fillStyle = grd;
+        myctx.lineWidth=5;
+        myctx.fillRect(1100,0,200,200);
     },
     windowResize = function() {
         _w = _body.offsetWidth;
