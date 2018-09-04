@@ -38,6 +38,8 @@
         /*填充渐变形状*/
         testLinearGradient();
         testRadialGradient();
+        /*图像填充*/
+        testImgCreatePattern();
     },
     drawOneLine=function(){
         myctx.beginPath();
@@ -209,6 +211,15 @@
         myctx.fillStyle = grd;
         myctx.lineWidth=5;
         myctx.fillRect(1100,0,200,200);
+    },
+    testImgCreatePattern=function(){
+        var img = new Image();  //创建Image对象
+        img.src = "/images/createPatternscreenshot.png";
+        img.onload=function(){
+            var pattern = myctx.createPattern(img,"repeat");
+            myctx.fillStyle = pattern;
+            myctx.fillRect(0,210,200,200);
+        };
     },
     windowResize = function() {
         _w = _body.offsetWidth;
