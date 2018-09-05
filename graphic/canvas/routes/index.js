@@ -13,7 +13,10 @@ router.get('/canvasBasics', async (ctx, next) => {
 })
 
 router.get('/string', async (ctx, next) => {
-  ctx.body = 'koa2 string'
+    ctx.set('Access-Control-Allow-Origin', '*');
+    ctx.set('Access-Control-Allow-Methods', 'POST,GET');
+    ctx.set('Access-Control-Allow-Headers', 'Content-Type');
+    ctx.body = 'koa2 string'
 })
 
 router.get('/json', async (ctx, next) => {
