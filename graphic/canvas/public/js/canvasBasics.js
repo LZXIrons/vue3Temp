@@ -40,6 +40,16 @@
         testRadialGradient();
         /*图像填充*/
         testImgCreatePattern();
+        /*绘制标准圆弧*/
+        testArc();
+        /*圆角矩形*/
+        roundedRectangle();
+        /*2048样式*/
+        test248bg();
+        /*使用切点绘制圆弧*/
+        testarcTo();
+        testquadraticCurveTo();
+        testbezierCurveTo();
     },
     drawOneLine=function(){
         myctx.beginPath();
@@ -213,6 +223,7 @@
         myctx.fillRect(1100,0,200,200);
     },
     testImgCreatePattern=function(){
+        myctx.beginPath();
         var img = new Image();  //创建Image对象
         img.src = "/images/createPatternscreenshot.png";
         img.onload=function(){
@@ -220,6 +231,148 @@
             myctx.fillStyle = pattern;
             myctx.fillRect(0,210,200,200);
         };
+    },
+    testArc=function(){
+        myctx.beginPath();
+        myctx.arc(250,300,30,0,Math.PI*2,true);
+        myctx.strokeStyle='#FF1493';
+        myctx.stroke();
+    },
+    roundedRectangle=function(){
+        drawRoundRect(myctx, 320, 210, 200, 200, 50);
+        myctx.strokeStyle="#FF8247";
+        myctx.lineWidth=10;
+        myctx.stroke();
+        myctx.fillStyle="#FFBBFF";
+        myctx.fill();
+    },
+    test248bg=function(){
+        drawRoundRect(myctx, 550, 210, 200, 200, 5);
+        myctx.fillStyle = "#AA7B41";
+        myctx.fill();
+        myctx.strokeStyle = "#0078AA";
+        myctx.stroke();
+        for(var i = 1; i <= 4; i++){
+            for(var j = 1; j <= 4; j++){
+                drawRoundRect(myctx, 550 + 16 * i + 30 * (i - 1), 210 + 16 * j + 30 * (j - 1), 30, 30, 5);
+                myctx.fillStyle = "#CCBFB4";
+                myctx.fill();
+                myctx.strokeStyle = "#0078AA";
+                myctx.stroke();
+            }
+        }
+    },
+    testarcTo=function(){
+        myctx.beginPath();
+        myctx.moveTo(800, 210);
+        myctx.arcTo(900, 210, 900, 300, 50);
+        myctx.lineWidth = 6;
+        myctx.strokeStyle = "red";
+        myctx.stroke();
+        myctx.beginPath();
+        myctx.moveTo(800, 210);
+        myctx.lineTo(900, 210);
+        myctx.lineTo(900, 300);
+        myctx.lineWidth = 1;
+        myctx.strokeStyle = "#0088AA";
+        myctx.stroke();
+    },
+    testquadraticCurveTo=function(){
+        myctx.lineWidth = 6;
+        myctx.strokeStyle = "#333";
+        myctx.beginPath();
+        myctx.moveTo(940, 337);
+        myctx.quadraticCurveTo(956, 243, 1058, 336);
+        myctx.stroke();
+    },
+    testbezierCurveTo=function(){
+        drawPrairie(myctx);
+        drawSky(myctx);
+        for(var i=0; i <5; i++){
+            var x0 = 500 * Math.random() + 50;
+            var y0 = 200 * Math.random() + 550;
+            var c0 = 100 * Math.random() + 50;
+            drawCloud(myctx, x0, y0, c0);
+        }
+    },
+    drawPrairie=function(cxt){
+        cxt.save();
+
+        cxt.beginPath();
+        cxt.moveTo(0, 820);
+        cxt.bezierCurveTo(250, 650, 550, 750, 800, 600);
+        cxt.lineTo(800,1000);
+        cxt.lineTo(0,1000);
+        cxt.closePath();
+
+        var lineStyle = cxt.createLinearGradient(0, 1000, 1000, 0);
+        lineStyle .addColorStop(0, "#00AA58");
+        lineStyle .addColorStop(0.3, "#63AA7B");
+        lineStyle .addColorStop(1, "#04AA00");
+
+        cxt.fillStyle = lineStyle;
+        cxt.fill();
+
+        cxt.restore();
+    },
+    drawSky=function(cxt){
+        cxt.save();
+
+        cxt.beginPath();
+        cxt.moveTo(0, 1000);
+        cxt.lineTo(800,1000);
+        cxt.lineTo(800,1000);
+        cxt.lineTo(0,1000);
+        cxt.closePath();
+
+        var lineStyle = cxt.createRadialGradient(400, 1000, 50, 1000, 0, 1000);
+        lineStyle .addColorStop(0, "#42A9AA");
+        lineStyle .addColorStop(1, "#2491AA");
+
+        cxt.fillStyle = lineStyle;
+
+        cxt.fill();
+
+        cxt.restore();
+    },
+    drawCloud=function(cxt, cx, cy, cw){
+        //云朵移动范围即画布宽度
+        var maxWidth = 800;
+        //如果超过边界从头开始绘制
+        cx = cx % maxWidth;
+        //云朵高度为宽度的60%
+        var ch = cw * 0.6;
+        //开始绘制云朵
+
+        cxt.beginPath();
+        cxt.fillStyle = "white";
+        //创建渐变
+        var grd = cxt.createLinearGradient(0, 0, 0, cy);
+        grd.addColorStop(0, 'rgba(255,255,255,0.8)');
+        grd.addColorStop(1, 'rgba(255,255,255,0.5)');
+        cxt.fillStyle = grd;
+
+        //在不同位置创建5个圆拼接成云朵现状
+        cxt.arc(cx, cy, cw * 0.19, 0, 360, false);
+        cxt.arc(cx + cw * 0.08, cy - ch * 0.3, cw * 0.11, 0, 360, false);
+        cxt.arc(cx + cw * 0.3, cy - ch * 0.25, cw * 0.25, 0, 360, false);
+        cxt.arc(cx + cw * 0.6, cy, cw * 0.21, 0, 360, false);
+        cxt.arc(cx + cw * 0.3, cy - ch * 0.1, cw * 0.28, 0, 360, false);
+        cxt.closePath();
+
+        cxt.fill();
+    },
+    drawRoundRect=function(cxt, x, y, width, height, radius){
+        /*画一个圆角矩形*/
+        cxt.beginPath();
+        cxt.arc(x + radius, y + radius, radius, Math.PI, Math.PI * 3 / 2);
+        cxt.lineTo(width - radius + x, y);
+        cxt.arc(width - radius + x, radius + y, radius, Math.PI * 3 / 2, Math.PI * 2);
+        cxt.lineTo(width + x, height + y - radius);
+        cxt.arc(width - radius + x, height - radius + y, radius, 0, Math.PI * 1 / 2);
+        cxt.lineTo(radius + x, height +y);
+        cxt.arc(radius + x, height - radius + y, radius, Math.PI * 1 / 2, Math.PI);
+        cxt.closePath();
     },
     windowResize = function() {
         _w = _body.offsetWidth;
