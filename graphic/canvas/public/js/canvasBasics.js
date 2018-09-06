@@ -286,8 +286,8 @@
         myctx.stroke();
     },
     testbezierCurveTo=function(){
-        drawPrairie(myctx);
         drawSky(myctx);
+        drawPrairie(myctx);
         for(var i=0; i <5; i++){
             var x0 = 500 * Math.random() + 50;
             var y0 = 200 * Math.random() + 550;
@@ -295,42 +295,43 @@
             drawCloud(myctx, x0, y0, c0);
         }
     },
+    drawSky=function(cxt){
+        cxt.save();
+
+        cxt.beginPath();
+        cxt.moveTo(0, 900);
+        //cxt.bezierCurveTo(50, 450, 550, 550, 800, 400);
+        cxt.lineTo(800,900);
+        cxt.lineTo(800,420);
+        cxt.lineTo(0,420);
+        cxt.closePath();
+
+        var lineStyle = cxt.createRadialGradient(400, 420, 200, 400, 420, 400);
+        lineStyle.addColorStop(0, "#42A9AA");
+        lineStyle.addColorStop(1, "#2491AA");
+
+        cxt.fillStyle = lineStyle;
+
+        cxt.fill();
+
+        cxt.restore();
+    },
     drawPrairie=function(cxt){
         cxt.save();
 
         cxt.beginPath();
         cxt.moveTo(0, 820);
-        cxt.bezierCurveTo(250, 650, 550, 750, 800, 600);
+        cxt.bezierCurveTo(250, 750, 550, 850, 800, 900);
         cxt.lineTo(800,1000);
         cxt.lineTo(0,1000);
         cxt.closePath();
 
         var lineStyle = cxt.createLinearGradient(0, 1000, 1000, 0);
-        lineStyle .addColorStop(0, "#00AA58");
-        lineStyle .addColorStop(0.3, "#63AA7B");
-        lineStyle .addColorStop(1, "#04AA00");
+        lineStyle.addColorStop(0, "#00AA58");
+        lineStyle.addColorStop(0.3, "#63AA7B");
+        lineStyle.addColorStop(1, "#04AA00");
 
         cxt.fillStyle = lineStyle;
-        cxt.fill();
-
-        cxt.restore();
-    },
-    drawSky=function(cxt){
-        cxt.save();
-
-        cxt.beginPath();
-        cxt.moveTo(0, 1000);
-        cxt.lineTo(800,1000);
-        cxt.lineTo(800,1000);
-        cxt.lineTo(0,1000);
-        cxt.closePath();
-
-        var lineStyle = cxt.createRadialGradient(400, 1000, 50, 1000, 0, 1000);
-        lineStyle .addColorStop(0, "#42A9AA");
-        lineStyle .addColorStop(1, "#2491AA");
-
-        cxt.fillStyle = lineStyle;
-
         cxt.fill();
 
         cxt.restore();
