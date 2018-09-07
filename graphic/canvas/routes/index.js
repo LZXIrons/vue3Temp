@@ -17,17 +17,4 @@ router.get('/canvasBasics2', async (ctx, next) => {
   })
 });
 
-router.get('/string', async (ctx, next) => {
-    ctx.set('Access-Control-Allow-Origin', '*');
-    ctx.set('Access-Control-Allow-Methods', 'POST,GET');
-    ctx.set('Access-Control-Allow-Headers', 'Content-Type');
-    ctx.body = 'koa2 string'
-});
-
-router.get('/json', async (ctx, next) => {
-  ctx.body = {
-    title: 'koa2 json'
-  }
-});
-
 module.exports = router;
