@@ -33,7 +33,7 @@ app.use(async (ctx, next) => {
             await next();
         }else{
             await ctx.render(hname[1], {
-                title: hname
+                title: hname[1]
             });
         }
     }else{
