@@ -10,15 +10,19 @@
         windowResize();
         _.dom.visualState(mycanvas,'visibility');
         window.addEventListener('resize', windowResize);
-        //clock1(150,150,100);
+        drawFunc();
+    },
+    drawFunc=function(){
         wristwatch(cxt,200,200,100);
-        electronicWatch(cxt,500,200);
+        electronicWatch(cxt,500,100);
     },
     electronicWatch=function(cxt,x,y){
-        var dashWid=20;
+        var dashWid=2,
+            dashLen=20;
+        var numimg=new Image();
         var drawWatch=function(){
             cxt.save();
-            cxt.strokeRect(x,y,300,200);
+            cxt.fillRect(x,y,480,110);
             drawTime();
             cxt.restore();
         },
@@ -27,12 +31,67 @@
                 hour=date.getHours(),
                 minuete=date.getMinutes(),
                 sec=date.getSeconds();
-            hour = hour<10?'0'+hour:hour;
-            minuete = minuete<10?'0'+minuete:minuete;
-            sec = sec<10?'0'+sec:sec;
+            hour = hour<10?'0'+hour:hour+"";
+            minuete = minuete<10?'0'+minuete:minuete+"";
+            sec = sec<10?'0'+sec:sec+"";
+            drawNumber(cxt,hour,x,y);
+            drawColo(cxt,x+148,y+40);
+            drawNumber(cxt,minuete,x+160,y);
+            drawColo(cxt,x+308,y+40);
+            drawNumber(cxt,sec,x+322,y);
+        },
+        drawColo=function(cxt,x,y){
+            cxt.save();
+            cxt.beginPath();
+            cxt.fillStyle="#fff";
+            cxt.arc(x,y,5,0,Math.PI*2,false);
+            cxt.fill();
+            cxt.arc(x,y+20,5,0,Math.PI*2,false);
+            cxt.fill();
+            cxt.closePath();
+            cxt.restore();
+        },
+        drawNumber=function(cxt,num,x,y){
+            for(var i=0,len=num.length;i<len;i++){
+                switch(num[i]){
+                    case '0':
+                        cxt.drawImage(numimg,25,17,66,108,x+i*66,y,66,108);
+                    break;
+                    case '1':
+                        cxt.drawImage(numimg,114,17,18,108,x+25+i*66,y,20,108);
+                    break;
+                    case '2':
+                        cxt.drawImage(numimg,160,17,66,108,x+i*66,y,66,108);
+                    break;
+                    case '3':
+                        cxt.drawImage(numimg,245,17,66,108,x+i*66,y,66,108);
+                    break;
+                    case '4':
+                        cxt.drawImage(numimg,338,17,66,108,x+i*66,y,66,108);
+                    break;
+                    case '5':
+                        cxt.drawImage(numimg,439,17,66,108,x+i*66,y,66,108);
+                    break;
+                    case '6':
+                        cxt.drawImage(numimg,160,169,66,108,x+i*66,y,66,108);
+                    break;
+                    case '7':
+                        cxt.drawImage(numimg,246,169,66,108,x+i*66,y,66,108);
+                    break;
+                    case '8':
+                        cxt.drawImage(numimg,338,169,66,108,x+i*66,y,66,108);
+                    break;
+                    case '9':
+                        cxt.drawImage(numimg,439,169,66,108,x+i*66,y,66,108);
+                    break;
+                }
+            }
         };
-        drawWatch();
-        setInterval(drawWatch,1000);
+        numimg.addEventListener('load',function(){
+            drawWatch();
+            setInterval(drawWatch,1000);
+        });
+        numimg.src='/images/clocknum.jpg';
     },
     wristwatch=function(cxt,x,y,r){
         var drawWatch=function(){
@@ -97,6 +156,7 @@
         _h = _body.offsetHeight;
         mycanvas.width = _w;
         mycanvas.height = _h;
+        drawFunc();
     };
     init();
 })(this);
