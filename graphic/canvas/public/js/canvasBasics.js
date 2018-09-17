@@ -3,8 +3,7 @@
     var mycanvas = _.dom.qid('mycanvas'),
     myctx = mycanvas.getContext('2d'),
     _body = document.body,
-    _w,
-    //容器的宽度，也是canvas的宽度
+    _w,//容器的宽度，也是canvas的宽度
     _h; //容器的高度，也是canvas的高度
     var init = function() {
         windowResize();
