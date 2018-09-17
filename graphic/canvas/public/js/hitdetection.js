@@ -1,4 +1,17 @@
 "use strict";
+function Ball(cxt,x,y,r,fcolor){
+    cxt.beginPath();
+    cxt.save();
+    fcolor = fcolor || "#EE7AE9";
+    cxt.arc(x,y,r,0,Math.PI*2,false);
+    cxt.fillStyle=fcolor;
+    cxt.fill();
+    cxt.restore();
+    cxt.closePath();
+}
+Ball.prototype={
+    constructor:Ball
+};
 ;(function(window) {
     var mycanvas = _.dom.qid('mycanvas'),
     cxt = mycanvas.getContext('2d'),
@@ -12,31 +25,12 @@
         testFPS();
     },
     drawFunc=function(){
-        testFPS();
+        /*外接图形判别法*/
+        /*外接矩形判别法*/
+        testBoundingRectangle();
     },
-    testFPS=function(){
-        var lastTime=(+new Date);
-        var drawFPScalc=function(){
-            var fps=parseInt(calculateFPS());
-            requestAnimationFrame(drawFPScalc);
-            cxt.clearRect(0,0,100,100);
-            cxt.fillStyle='#FFA500';
-            cxt.textAlign='left';
-            cxt.fillText(fps+' FPS',20,20);
-        },
-        calculateFPS=function(){
-            var now=(+new Date),
-                fps=1000/(now - lastTime);
-            lastTime=now;
-            return fps;
-        };
-        requestAnimationFrame(drawFPScalc);
-    },
-    testRAF=function(){
-        cxt.beginPath();
-        cxt.moveTo(x,y);
-        cxt.lineTo(x+10,y+10);
-        cxt.stroke();
+    testBoundingRectangle=function(){
+        var bal=new Ball();
     },
     windowResize = function() {
         _w = _body.offsetWidth;
