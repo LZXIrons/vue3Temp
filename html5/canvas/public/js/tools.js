@@ -1,4 +1,5 @@
 "use strict";
+
 var PubSub=(function(global){
     var defaultSpace="default",
         nameSpace = {},
@@ -43,7 +44,7 @@ var PubSub=(function(global){
                 var _cacheByKey= this.cache[key],
                     ccnum=0;
                 for(var c in _cacheByKey){
-                    if(_cacheByKey.hasOwnProperty(c)){
+                    if(_cacheByKey.hasOwnProperty(c) && _ckey!='last'){
                         if(_cacheByKey[c][1]==fn){
                             delete _cacheByKey[c];
                             continue;
@@ -70,7 +71,7 @@ var PubSub=(function(global){
         },
         carryOut:function(_cacheByKey,params){
             for(var _ckey in _cacheByKey){
-                if(!_cacheByKey.hasOwnProperty(_ckey)){
+                if(!_cacheByKey.hasOwnProperty(_ckey) || _ckey=='last'){
                     continue;
                 }
                 var _cck=_cacheByKey[_ckey];
@@ -105,6 +106,7 @@ var PubSub=(function(global){
         }
     };
 })(this);
+
 /*
   *brower utils
   @author liuyong
