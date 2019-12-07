@@ -15,6 +15,12 @@ const routes = [
     name: "quickSort",
     component: () =>
       import(/* webpackChunkName: "quickSort" */ "../views/quickSort.vue")
+  },
+  {
+    path: "/test",
+    name: "test",
+    component: () =>
+      import(/* webpackChunkName: "test" */ "../views/test.vue")
   }
 ];
 

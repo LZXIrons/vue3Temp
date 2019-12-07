@@ -2,6 +2,7 @@
   <div class="leftNavBars">
     <a href="/" title="首页">首页</a>
     <a href="/quickSort" title="快速排序">快速排序</a>
+    <a href="/test" title="测试">测试</a>
   </div>
 </template>
 
