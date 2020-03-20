@@ -17,10 +17,10 @@ const routes = [
       import(/* webpackChunkName: "quickSort" */ "../views/quickSort.vue")
   },
   {
-    path: "/test",
-    name: "test",
+    path: "/bubbleSort",
+    name: "bubbleSort",
     component: () =>
-      import(/* webpackChunkName: "test" */ "../views/test.vue")
+      import(/* webpackChunkName: "bubbleSort" */ "../views/bubbleSort.vue")
   }
 ];
 

@@ -2,7 +2,7 @@
   <div class="leftNavBars">
     <a href="/" title="首页">首页</a>
     <a href="/quickSort" title="快速排序">快速排序</a>
-    <a href="/test" title="测试">测试</a>
+    <a href="/bubbleSort" title="冒泡排序">冒泡排序</a>
   </div>
 </template>
 
@@ -13,25 +13,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.leftNavBars{
+.leftNavBars {
   float: left;
-  width:300px;
-  height:100%;
+  width: 300px;
+  height: 100%;
   overflow-y: auto;
   font-size: 16px;
   line-height: 20px;
 }
-.leftNavBars a{
+.leftNavBars a {
   display: block;
   text-align: left;
   text-indent: 2em;
-  margin:10px auto;
+  margin: 10px auto;
   color: #333;
   text-decoration: none;
-  &.actived{
+  &.actived {
     color: #999;
   }
-  &:hover{
+  &:hover {
     color: #000;
     text-decoration: underline;
   }
