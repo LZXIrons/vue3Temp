@@ -1,8 +1,6 @@
 /*
  * @Author: LiuYong
  * @Date: 2019-11-16 17:36:57
- * @LastEditTime: 2020-03-20 16:49:34
- * @LastEditors: Please set LastEditors
  * @Description: 排序算法
  */
 
@@ -152,8 +150,10 @@ function bubbleSortAsc(arr) {
     if (arrLength < 2) {
         return _arr;
     }
-    //循环整个数组，每一次找到一个最大值
+    //循环整个数组，每一次找到一个最大值，由于最后交换时是前后两个交换，所以其实之需要arrLength - 2 次外层循环
     for (let i = 0, ilen = arrLength - 1; i < ilen; i++) {
+		//把0至arrLength - i - 1再循环一次，找出这个子集里面最大的数，并移动到这个子集的最后一个位置上去，
+		//arrLength - i - 1之后的集合其实就是已经排好序了的了，因为每一次内层循环都会把当前子集最大的数移到最后一位
         for (let j = 0; j < arrLength - i - 1; j++) {
             if (_arr[j] > _arr[j + 1]) {
                 let temp = _arr[j];
