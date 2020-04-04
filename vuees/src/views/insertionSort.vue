@@ -6,6 +6,8 @@
 import {
     insertionSortAsc,
     insertionSortDesc,
+    halveInsertionSortAsc,
+    halveInsertionSortDesc,
     verifyArrayOrderlyAsc,
     verifyArrayOrderlyDesc
 } from "@assets/js/sort.js";
@@ -29,6 +31,18 @@ export default {
         arr2 = insertionSortDesc(arr2);
         console.timeEnd("insertionSortDesc");
         console.log(verifyArrayOrderlyDesc(arr2));
+
+        let arr3 = arr.concat();
+        console.time("halveInsertionSortAsc");
+        arr3 = halveInsertionSortAsc(arr3);
+        console.timeEnd("halveInsertionSortAsc");
+        console.log(verifyArrayOrderlyAsc(arr3));
+
+        let arr4 = arr.concat();
+        console.time("halveInsertionSortDesc");
+        arr4 = halveInsertionSortDesc(arr4);
+        console.timeEnd("halveInsertionSortDesc");
+        console.log(verifyArrayOrderlyDesc(arr4));
     }
 };
 </script>

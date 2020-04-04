@@ -255,6 +255,79 @@ function insertionSortDesc(arr) {
     return _arr;
 }
 
+/**
+ * @description: 折半插入排序-升序,折半插入排序算法是稳定的算法,平均时间复杂度是O(n*n)
+ * @param {Array}
+ * @return: Array
+ */
+function halveInsertionSortAsc(arr) {
+    if (!Array.isArray(arr)) {
+        throw TypeError("param must be a Array");
+    }
+    let _arr = arr.concat();
+    let arrLength = _arr.length;
+    if (arrLength < 2) {
+        return _arr;
+    }
+    for(let i=1;i<arrLength;i++){
+        let current=_arr[i],
+            left = 0,
+            right = i - 1;
+        //折半查找
+        while(left<=right){
+            let mid=Math.floor((left+right)/2);
+            if(current<_arr[mid]){
+                right=mid-1;
+            }else{
+                left=mid+1;
+            }
+        }
+        //如果从右向左第一个小于等于当前元素的位置就在当前元素的前一位，就不用再做处理了
+        if(left!=i){
+            //将当前元素从数组取出，直接插入到从右向左第一个小于等于当前元素的位置后面
+            _arr.splice(left,0,_arr.splice(i,1)[0]);
+        }
+    }
+    return _arr;
+}
+
+/**
+ * @description: 折半插入排序-降序,折半插入排序算法是稳定的算法,平均时间复杂度是O(n*n)
+ * @param {Array}
+ * @return: Array
+ */
+function halveInsertionSortDesc(arr) {
+    if (!Array.isArray(arr)) {
+        throw TypeError("param must be a Array");
+    }
+    let _arr = arr.concat();
+    let arrLength = _arr.length;
+    if (arrLength < 2) {
+        return _arr;
+    }
+    for(let i=1;i<arrLength;i++){
+        let current=_arr[i],
+            left = 0,
+            right = i - 1;
+        //折半查找
+        while(left<=right){
+            let mid=Math.floor((left+right)/2);
+            if(current>_arr[mid]){
+                right=mid-1;
+            }else{
+                left=mid+1;
+            }
+        }
+        //如果从右向左第一个小于等于当前元素的位置就在当前元素的前一位，就不用再做处理了
+        if(left!=i){
+            //将当前元素从数组取出，直接插入到从右向左第一个小于等于当前元素的位置后面
+            _arr.splice(left,0,_arr.splice(i,1)[0]);
+        }
+    }
+    return _arr;
+}
+
+
 export {
     verifyArrayOrderlyAsc,
     verifyArrayOrderlyDesc,
@@ -263,5 +336,7 @@ export {
     bubbleSortAsc,
     bubbleSortDesc,
     insertionSortAsc,
-    insertionSortDesc
+    insertionSortDesc,
+    halveInsertionSortAsc,
+    halveInsertionSortDesc
 };
