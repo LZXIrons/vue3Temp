@@ -20,6 +20,11 @@ const routes = [
         path: "/bubbleSort",
         name: "bubbleSort",
         component: () => import("../views/bubbleSort.vue")
+    },
+    {
+        path: "/insertionSort",
+        name: "insertionSort",
+        component: () => import("../views/insertionSort.vue")
     }
 ];
 

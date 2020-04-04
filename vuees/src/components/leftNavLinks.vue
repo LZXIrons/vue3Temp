@@ -3,6 +3,7 @@
         <a href="/" title="首页">首页</a>
         <a href="/quickSort" title="快速排序">快速排序</a>
         <a href="/bubbleSort" title="冒泡排序">冒泡排序</a>
+        <a href="/insertionSort" title="插入排序">插入排序</a>
     </div>
 </template>
 

@@ -54,7 +54,7 @@ function verifyArrayOrderlyDesc(arr) {
 }
 
 /**
- * @description: 快速排序-升序,快速排序算法是不稳定的算法
+ * @description: 快速排序-升序,快速排序算法是不稳定的算法,它的平均时间复杂度是O(nlogn)
  * @param {Array}
  * @return: Array
  */
@@ -100,7 +100,7 @@ function quickSortAsc(arr) {
 }
 
 /**
- * @description: 快速排序-降序,快速排序算法是不稳定的算法
+ * @description: 快速排序-降序,快速排序算法是不稳定的算法,它的平均时间复杂度是O(nlogn)
  * @param {Array}
  * @return: Array
  */
@@ -137,7 +137,7 @@ function quickSortDesc(arr) {
 }
 
 /**
- * @description: 冒泡排序-升序,冒泡排序算法是稳定的算法
+ * @description: 冒泡排序-升序,冒泡排序算法是稳定的算法,它的平均时间复杂度是O(n*n)
  * @param {Array}
  * @return: Array
  */
@@ -152,8 +152,8 @@ function bubbleSortAsc(arr) {
     }
     //循环整个数组，每一次找到一个最大值，由于最后交换时是前后两个交换，所以其实之需要arrLength - 2 次外层循环
     for (let i = 0, ilen = arrLength - 1; i < ilen; i++) {
-		//把0至arrLength - i - 1再循环一次，找出这个子集里面最大的数，并移动到这个子集的最后一个位置上去，
-		//arrLength - i - 1之后的集合其实就是已经排好序了的了，因为每一次内层循环都会把当前子集最大的数移到最后一位
+        //把0至arrLength - i - 1再循环一次，找出这个子集里面最大的数，并移动到这个子集的最后一个位置上去，
+        //arrLength - i - 1之后的集合其实就是已经排好序了的了，因为每一次内层循环都会把当前子集最大的数移到最后一位
         for (let j = 0; j < arrLength - i - 1; j++) {
             if (_arr[j] > _arr[j + 1]) {
                 let temp = _arr[j];
@@ -166,7 +166,7 @@ function bubbleSortAsc(arr) {
 }
 
 /**
- * @description: 冒泡排序-降序,冒泡排序算法是稳定的算法
+ * @description: 冒泡排序-降序,冒泡排序算法是稳定的算法,它的平均时间复杂度是O(n*n)
  * @param {Array}
  * @return: Array
  */
@@ -191,11 +191,77 @@ function bubbleSortDesc(arr) {
     return _arr;
 }
 
+/**
+ * @description: 插入排序-升序,插入排序算法是稳定的算法,平均时间复杂度是O(n*n)
+ * @param {Array}
+ * @return: Array
+ */
+function insertionSortAsc(arr) {
+    if (!Array.isArray(arr)) {
+        throw TypeError("param must be a Array");
+    }
+    let _arr = arr.concat();
+    let arrLength = _arr.length;
+    if (arrLength < 2) {
+        return _arr;
+    }
+    for(let i=1;i<arrLength;i++){
+        let current=_arr[i];
+        for(var j=i-1;j>-1;j--){
+            //从右向左找出第一个小于等于当前元素的元素
+            if(current<_arr[j]){
+                continue;
+            }
+            break;
+        }
+        //如果从右向左第一个小于等于当前元素的位置就在当前元素的前一位，就不用再做处理了
+        if(j!=i-1){
+            //将当前元素从数组取出，直接插入到从右向左第一个小于等于当前元素的位置后面
+            _arr.splice(j+1,0,_arr.splice(i,1)[0]);
+        }
+    }
+    return _arr;
+}
+
+/**
+ * @description: 插入排序-降序,插入排序算法是稳定的算法,平均时间复杂度是O(n*n)
+ * @param {Array}
+ * @return: Array
+ */
+function insertionSortDesc(arr) {
+    if (!Array.isArray(arr)) {
+        throw TypeError("param must be a Array");
+    }
+    let _arr = arr.concat();
+    let arrLength = _arr.length;
+    if (arrLength < 2) {
+        return _arr;
+    }
+    for(let i=1;i<arrLength;i++){
+        let current=_arr[i];
+        for(var j=i-1;j>-1;j--){
+            //从右向左找出第一个大于等于当前元素的元素
+            if(current>_arr[j]){
+                continue;
+            }
+            break;
+        }
+        //如果从右向左第一个小于等于当前元素的位置就在当前元素的前一位，就不用再做处理了
+        if(j!=i-1){
+            //将当前元素从数组取出，直接插入到从右向左第一个小于等于当前元素的位置后面
+            _arr.splice(j+1,0,_arr.splice(i,1)[0]);
+        }
+    }
+    return _arr;
+}
+
 export {
     verifyArrayOrderlyAsc,
     verifyArrayOrderlyDesc,
     quickSortAsc,
     quickSortDesc,
     bubbleSortAsc,
-    bubbleSortDesc
+    bubbleSortDesc,
+    insertionSortAsc,
+    insertionSortDesc
 };
