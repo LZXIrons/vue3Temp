@@ -1,0 +1,13 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "outDir": "./buildjs",
+        "allowJs": true,
+        "target": "es6",
+        "strictNullChecks":true,
+        "noImplicitThis":true
+    },
+    "include": [
+        "./ts/*"
+    ]
+}
