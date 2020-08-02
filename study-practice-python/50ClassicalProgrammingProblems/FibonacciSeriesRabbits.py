@@ -1,11 +1,3 @@
-'''
-@Author: your name
-@Date: 2020-07-25 20:24:15
-@LastEditTime: 2020-07-26 09:58:09
-@LastEditors: Please set LastEditors
-@Description: In User Settings Edit
-@FilePath: \study\study-practice-python\50ClassicalProgrammingProblems\FibonacciSeriesRabbits.py
-'''
 def rabbitsComputed(month):
     if month < 1 :
         return 0
