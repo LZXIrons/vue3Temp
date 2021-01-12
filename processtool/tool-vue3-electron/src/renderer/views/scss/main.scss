@@ -147,7 +147,9 @@ button {
   overflow: hidden;
   width: 100%;
   height: 100%;
-  background-color: var(--black);
-  border:1px solid var(--darkGray);
+  display: flex;
+  flex-direction: column;
+  background-color: #fffdfc;
+  border:1px solid transparent;
   color: var(--white);
 }

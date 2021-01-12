@@ -1,8 +1,9 @@
 <style lang="scss">
 .info {
+  flex: 1 1 auto;
   width: 100%;
-  height: 100%;
-  padding: 25px 10px 10px;
+  box-sizing: border-box;
+  padding: 10px;
 }
 </style>
 

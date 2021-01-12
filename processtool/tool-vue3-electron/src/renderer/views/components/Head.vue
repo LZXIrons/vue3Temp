@@ -1,16 +1,16 @@
 <style lang="scss">
 .head {
-  position: absolute;
-  top: 4px;
-  left: 5px;
-  right: 5px;
-  z-index: 999;
+  flex: 0 0 50px;
+  box-sizing: border-box;
+  padding: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #6cb3ff;
 
   .title {
-    font: bolder 13px sans-serif;
+    font: bolder 20px sans-serif;
+    text-indent: 2em;
 
     span {
       margin-left: 4px;
@@ -23,30 +23,19 @@
     align-items: center;
 
     .event {
-      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-      width: 15px;
-      height: 15px;
+      padding: 10px 20px;
+      font-size: 18px;
       margin-left: 10px;
+      color: #fff;
     }
 
     .event:hover {
-      opacity: .9;
+      color: #2fff0b;
     }
 
     .event:active {
-      opacity: .7;
-    }
-
-    .close {
-      background-color: var(--red);
-    }
-
-    .min {
-      background-color: var(--grey);
-    }
-
-    .maxmin {
-      background-color: var(--cyan);
+      color: #85ff03;
+      text-decoration: underline;
     }
   }
 }
@@ -55,12 +44,12 @@
 <template>
   <div class="head">
     <div class="title">
-      标题
+      发包小工具
     </div>
     <div class="events">
-      <div v-if="isMain" @click="min" class="event min no-drag cursor-pointer"></div>
-      <div v-if="isMain" @click="maxMin" class="event maxmin no-drag cursor-pointer"></div>
-      <div @click="close" class="event close no-drag cursor-pointer"></div>
+      <div v-if="isMain" @click="min" class="event no-drag cursor-pointer">最小化</div>
+      <div v-if="isMain" @click="maxMin" class="event no-drag cursor-pointer">最大化</div>
+      <div @click="close" class="event no-drag cursor-pointer">关闭</div>
     </div>
   </div>
 </template>
