@@ -4,6 +4,7 @@
   width: 100%;
   box-sizing: border-box;
   padding: 10px;
+  color: blue;
 }
 </style>
 
@@ -13,8 +14,6 @@
     <div class="info">
       <div>内部资源内容: {{ readFileSync(getInsidePath("t.txt")).toString() }}</div>
       <div>外部资源内容: {{ readFileSync(getExternPath("t.txt")).toString() }}</div>
-      <button @click="toAbout">关于</button>
-      <button @click="test">弹个框</button>
     </div>
   </div>
 </template>
@@ -38,25 +37,6 @@ export default defineComponent({
     let watchTest = watch(() => messageData["test"], (n, o) => { // n 为新赋值 o为旧值
       console.log(n, o)
     });
-
-    function test() {
-      let data: WindowOpt = {
-        route: "/message",
-        parentId: args.id,
-        data: {text: getGlobal("setting")}
-      }
-      createWindow(data);
-    }
-
-    function toAbout() {
-      let data: WindowOpt = {
-        route: "/about",
-        width: 300,
-        height: 300,
-        isMainWin: true
-      }
-      createWindow(data);
-    }
 
     onUnmounted(() => {
       watchTest()
