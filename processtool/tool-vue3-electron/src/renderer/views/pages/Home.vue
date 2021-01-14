@@ -45,9 +45,7 @@ export default defineComponent({
     return {
       readFileSync,
       getInsidePath,
-      getExternPath,
-      test,
-      toAbout
+      getExternPath
     }
   }
 });
