@@ -51,7 +51,7 @@ class Init {
             })
         }
         app.whenReady().then(() => {
-            this.window.createWindow({isMainWin: true});
+            this.window.createWindow({isMainWin: true,resizable:true});
             this.window.createTray();
         });
         app.on("window-all-closed", () => {
@@ -118,6 +118,7 @@ class Init {
             } else {
                 for (let i in this.window.group) if (this.window.group[i]) this.window.getWindow(Number(i)).minimize();
             }
+            event.returnValue = 'min'
         });
         //最大化
         ipcMain.on("window-max", (event, winId) => {
@@ -126,18 +127,23 @@ class Init {
             } else {
                 for (let i in this.window.group) if (this.window.group[i]) this.window.getWindow(Number(i)).maximize();
             }
+            event.returnValue = 'max'
         });
         //最大化最小化窗口
-        ipcMain.on("window-max-min-size", (event, winId) => {
+        ipcMain.handle("window-max-min-size", async (event, winId) => {
             if (winId) {
+              let size='max'
                 if (this.window.getWindow(winId).isMaximized()) {
                     this.window.getWindow(winId).unmaximize();
                     this.window.getWindow(winId).movable = true;
+                    size='middle'
                 } else {
                     this.window.getWindow(winId).movable = false;
                     this.window.getWindow(winId).maximize();
                 }
+              return size
             }
+            return ''
         });
         //复原
         ipcMain.on("window-restore", (event, winId) => {
@@ -162,7 +168,9 @@ class Init {
         //创建窗口
         ipcMain.on("window-new", (event, args) => this.window.createWindow(args));
         //设置窗口大小
-        ipcMain.on("window-size-set", (event, args) => this.window.setSize(args));
+        ipcMain.handle('window-size-set', async (event, args) => {
+          return this.window.setSize(args)
+        })
         //设置窗口最小大小
         ipcMain.on("window-min-size-set", (event, args) => this.window.setMinSize(args));
         //设置窗口最大大小

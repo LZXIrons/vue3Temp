@@ -48,14 +48,14 @@
     </div>
     <div class="events">
       <div v-if="isMain" @click="min" class="event no-drag cursor-pointer">最小化</div>
-      <div v-if="isMain" @click="maxMin" class="event no-drag cursor-pointer">最大化</div>
+      <div v-if="isMain" @click="maxMin" class="event no-drag cursor-pointer">{{isMax?'还原':'最大化'}}</div>
       <div @click="close" class="event no-drag cursor-pointer">关闭</div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
+import {defineComponent, ref} from "vue";
 import {argsState} from "@/renderer/store";
 import {minWindow, maxMinWindow, closeWindow} from "@/renderer/utils";
 
@@ -64,13 +64,16 @@ export default defineComponent({
   setup() {
     const args = argsState();
     const isMain = args.isMainWin || false;
+    
+    const isMax = ref(false)
 
     function min() {
       minWindow();
     }
-
-    function maxMin() {
-      maxMinWindow(args.id);
+    
+    async function maxMin() {
+      let result=await maxMinWindow(args.id);
+      isMax.value = result==='max'
     }
 
     function close() {
@@ -78,7 +81,13 @@ export default defineComponent({
       else closeWindow(args.id);
     }
 
-    return {min, maxMin, close, isMain}
+    return {
+      isMax,
+      isMain,
+      min,
+      maxMin,
+      close
+    }
   }
 });
 </script>

@@ -27,7 +27,9 @@ export function messageSend(args: IpcMsg) {
  * 设置窗口大小
  */
 export function setSize(id: number, size: number[], center: boolean = false) {
-    ipcRenderer.send("window-size-set", {id, size, center});
+    ipcRenderer.invoke('window-size-set', {id, size, center}).then((result) => {
+      console.log(result)
+    })
 }
 
 /**
@@ -65,8 +67,13 @@ export function createWindow(data: WindowOpt) {
 /**
  * 最大化&最小化当前窗口
  */
-export function maxMinWindow(id: number) {
-    ipcRenderer.send("window-max-min-size", id);
+export async function maxMinWindow(id: number) {
+    return ipcRenderer.invoke('window-max-min-size', id).then((result) => {
+      return result
+    }).catch(err=>{
+      console.error(err)
+      return ''
+    })
 }
 
 /**
