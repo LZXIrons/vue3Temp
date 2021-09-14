@@ -5,17 +5,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import {mapMutations} from 'vuex';
+import { defineComponent } from 'vue';
+import { mapMutations } from 'vuex';
 
 export default defineComponent({
-  name: "Home",
-  methods:{
+  name: 'Home',
+  methods: {
     ...mapMutations(['addTest']),
-    goabout(){
+    goabout() {
       this.addTest();
-      this.$router.push('/about')
-    }
-  }
+      this.$router.push('/about');
+    },
+  },
 });
 </script>
