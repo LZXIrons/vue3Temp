@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, defineProps } from 'vue';
+import { ref } from 'vue';
 
-defineProps<{ msg: string }>();
+defineProps({ msg: String });
 
 const count = ref(0);
 </script>

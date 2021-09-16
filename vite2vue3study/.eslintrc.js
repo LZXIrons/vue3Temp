@@ -30,5 +30,8 @@ module.exports = {
 				mocha: true
 			}
 		}
-	]
+	],
+	globals: {
+		defineProps: 'readonly'
+	}
 };
