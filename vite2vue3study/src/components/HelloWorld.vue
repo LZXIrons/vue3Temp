@@ -16,15 +16,16 @@ const count = ref(0);
 <style scoped lang="scss">
 @import '@/assets/scss/variable.scss';
 @import '@/assets/scss/mixin.scss';
-
 p,
 button {
+	color: #f00;
 	font-size: $font-size-txtm;
 }
 p {
 	@include text-overflow(3);
 	&.bigtxt {
 		font-size: $font-size-btxtl;
+		color: red;
 	}
 	&.title {
 		font-size: $font-size-titles;
