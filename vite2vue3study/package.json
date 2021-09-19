@@ -2,8 +2,14 @@
   "name": "vite2vue3study",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "dev": "vite serve --mode development",
+    "test": "vite serve --mode test",
+    "ppe": "vite serve --mode ppe",
+    "prod": "vite serve --mode production",
+    "build:dev": "vue-tsc --noEmit && vite build --mode development",
+    "build:test": "vue-tsc --noEmit && vite build --mode test",
+    "build:ppe": "vue-tsc --noEmit && vite build --mode ppe",
+    "build:prod": "vue-tsc --noEmit && vite build --mode production",
     "serve": "vite preview"
   },
   "dependencies": {
