@@ -4,5 +4,4 @@ import router from './router';
 import store from './store';
 
 const app = createApp(App);
-app.config.globalProperties.$importEnv = import.meta.env;
 app.use(store).use(router).mount('#app');

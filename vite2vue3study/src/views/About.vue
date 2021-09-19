@@ -18,13 +18,11 @@ export default defineComponent({
 	components: { HelloWorld },
 	methods: {},
 	created() {
-		console.log('this.$importEnv.MODE:' + this.$importEnv.MODE);
-		console.log('this.$importEnv.BASE_URL:' + this.$importEnv.BASE_URL);
-		console.log('this.$importEnv.PROD:' + this.$importEnv.PROD);
-		console.log('this.$importEnv.DEV:' + this.$importEnv.DEV);
-		console.log(
-			'this.$importEnv.VITE_APP_TITLE:' + this.$importEnv.VITE_APP_TITLE
-		);
+		console.log('MODE:' + import.meta.env.MODE);
+		console.log('BASE_URL:' + import.meta.env.BASE_URL);
+		console.log('PROD:' + import.meta.env.PROD);
+		console.log('DEV:' + import.meta.env.DEV);
+		console.log('VITE_APP_TITLE:' + import.meta.env.VITE_APP_TITLE);
 	}
 });
 </script>
