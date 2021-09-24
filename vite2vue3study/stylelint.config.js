@@ -8,7 +8,7 @@ module.exports = {
 		'at-rule-no-unknown': [
 			true,
 			{
-				ignoreAtRules: ['include']
+				ignoreAtRules: ['include', 'mixin']
 			}
 		],
 		'rule-empty-line-before': ['never']
