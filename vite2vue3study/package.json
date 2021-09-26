@@ -1,6 +1,6 @@
 {
   "name": "vite2vue3study",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite serve --mode development",
     "test": "vite serve --mode test",
@@ -32,6 +32,7 @@
     "sass": "^1.41.0",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recess-order": "^2.5.0",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.21.0",
