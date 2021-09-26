@@ -18,12 +18,16 @@ const count = ref(0);
 @import '@/assets/scss/mixin.scss';
 p,
 button {
-	color: #f00;
+	position: relative;
+	display: flex;
+	margin: 0;
 	font-size: $font-size-txtm;
+	color: #f00;
 }
 p {
 	@include text-overflow(3);
 	&.bigtxt {
+		display: block;
 		font-size: $font-size-btxtl;
 		color: red;
 	}

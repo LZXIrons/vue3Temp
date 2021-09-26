@@ -1,7 +1,7 @@
 @mixin no-wrap($lines) {
+	display: -webkit-box;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	display: -webkit-box;
 	-webkit-line-clamp: $lines;
 	-webkit-box-orient: vertical;
 }
@@ -16,9 +16,9 @@
 //多行文本超过行数显示省略号，只适用于WebKit及移动端
 @mixin text-overflow($line: 2) {
 	display: -webkit-box;
+	overflow: hidden;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: $line;
-	overflow: hidden;
 }
 
 /* 四周阴影 */
@@ -32,8 +32,8 @@
 @mixin layout($dir: column, $justify: center, $align: right) {
 	display: flex;
 	flex-direction: $dir;
-	justify-content: $justify;
 	align-items: $align;
+	justify-content: $justify;
 }
 
 @mixin userselect($val: none) {
