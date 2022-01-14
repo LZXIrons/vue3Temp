@@ -22,8 +22,8 @@ const count = ref(0)
 </template>
 
 <style scoped lang="scss">
-@import '/@/assets/scss/variable.scss';
-@import '/@/assets/scss/mixin.scss';
+@import '@/assets/scss/variable.scss';
+@import '@/assets/scss/mixin.scss';
 p,
 button {
 	position: relative;
