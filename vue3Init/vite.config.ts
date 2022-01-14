@@ -48,7 +48,7 @@ export default defineConfig(({ command }: ConfigEnv) => {
 				'@import "@/assets/scss/globalVariable1.scss";@import "@/assets/scss/globalVariable2.scss";'
 				这种格式
 				 */
-					additionalData: '@import "@/assets/scss/globalVariable.scss";'
+					additionalData: '@import "/@/assets/scss/globalVariable.scss";'
 				}
 			}
 		}

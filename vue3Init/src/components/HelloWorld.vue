@@ -12,7 +12,9 @@ const count = ref(0)
 </script>
 
 <template>
-	<p class="title">title title</p>
+	<p class="ml-2 ml-1 ml-0 truncate text-cyan-500 md:opacity-100" v-if="msg">
+		title title
+	</p>
 	<p class="bigtxt">big txt</p>
 
 	<p>{{ msg }}</p>
@@ -20,8 +22,8 @@ const count = ref(0)
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/scss/variable.scss';
-@import '@/assets/scss/mixin.scss';
+@import '/@/assets/scss/variable.scss';
+@import '/@/assets/scss/mixin.scss';
 p,
 button {
 	position: relative;
