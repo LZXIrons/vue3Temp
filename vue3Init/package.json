@@ -20,6 +20,8 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
     "@vitejs/plugin-vue": "^1.6.1",
@@ -29,6 +31,8 @@
     "eslint": "^7.32.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^7.17.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.2.2",
     "mockjs": "^1.1.0",
     "postcss-sorting": "^6.0.0",
     "prettier": "^2.4.0",
@@ -43,5 +47,14 @@
     "vite": "^2.5.4",
     "vite-plugin-mock": "^2.9.6",
     "vue-tsc": "^0.2.2"
+  },
+  "husky": {
+    "hooks": {
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix"
   }
 }
