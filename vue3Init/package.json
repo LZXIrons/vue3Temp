@@ -48,13 +48,20 @@
     "vite-plugin-mock": "^2.9.6",
     "vue-tsc": "^0.2.2"
   },
+	"gitHooks": {
+    "pre-commit": "lint-staged"
+  },
   "husky": {
     "hooks": {
-			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.js": "eslint --fix"
-  }
+    "**/*.{js,vue}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
 }
