@@ -15,7 +15,7 @@ const count = ref(0)
 	<p class="ml-2 ml-1 ml-0 truncate text-cyan-500 md:opacity-100" v-if="msg">
 		title title
 	</p>
-	<p class="bigtxt">big txt1</p>
+	<p class="bigtxt">big txt12</p>
 
 	<p>{{ msg }}</p>
 	<button type="button" @click="count++">count is: {{ count }}</button>
